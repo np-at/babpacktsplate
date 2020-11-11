@@ -1,3 +1,5 @@
+import {HotModuleReplacementPlugin} from "webpack";
+
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -30,7 +32,7 @@ module.exports = {
     watchContentBase: true
 
   },
-  entry: ['@babel/polyfill', path.resolve(__dirname, 'src/index.ts')],
+  entry: dev ? [path.resolve(__dirname, 'src/index.ts')] : ['@babel/polyfill', path.resolve(__dirname, 'src/index.ts')],
   module: {
     rules: [
       {
@@ -75,6 +77,6 @@ module.exports = {
   },
   mode: dev ? 'development' : 'production',
   plugins: dev
-    ? [HTMLWebpackPluginConfig, new MiniCssExtractPlugin(), new webpack.HotModuleReplacementPlugin()]
+    ? [HTMLWebpackPluginConfig, new MiniCssExtractPlugin(), new HotModuleReplacementPlugin()]
     : [HTMLWebpackPluginConfig,new MiniCssExtractPlugin(), DefinePluginConfig],
 };
