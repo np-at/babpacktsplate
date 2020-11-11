@@ -1,4 +1,4 @@
-import {HotModuleReplacementPlugin} from "webpack";
+const {HotModuleReplacementPlugin} = require("webpack");
 
 const path = require('path');
 const webpack = require('webpack');
