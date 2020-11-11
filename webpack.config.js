@@ -26,7 +26,7 @@ module.exports = {
     },
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, "dist"),
-    publicPath: "http://localhost:3000/dist/",
+    publicPath: "dist/",
     watchContentBase: true
 
   },
