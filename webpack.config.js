@@ -1,9 +1,11 @@
-const { HotModuleReplacementPlugin } = require("webpack");
+// webpack.config.js
+// webpack dev server configuration is located in /dev.js
 
 const path = require("path");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { HotModuleReplacementPlugin } = require("webpack");
 
 const dev = process.env.NODE_ENV !== "production";
 
@@ -13,24 +15,12 @@ const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   inject: "body",
   publicPath: "dist"
 });
-
 const DefinePluginConfig = new webpack.DefinePlugin({
   "process.env.NODE_ENV": JSON.stringify("production")
 });
 
 module.exports = {
-  devServer: {
-    host: "0.0.0.0",
-    port: 3000,
-    hot: true,
-    headers: {
-      "Access-Control-Allow-Origin": "*"
-    },
-    historyApiFallback: true,
-    contentBase: path.resolve(__dirname, "dist"),
-    publicPath: "dist/",
-    watchContentBase: true
-  },
+  // @babel/polyfill makes the bundle size too large for codesandbox.io sync mechanism so don't use in dev env.
   entry: dev
     ? [path.resolve(__dirname, "src/index.ts")]
     : ["@babel/polyfill", path.resolve(__dirname, "src/index.ts")],

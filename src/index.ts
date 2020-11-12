@@ -1,4 +1,4 @@
-import "./styles/main.scss";
+import "./main.scss";
 const e = (a: number = 1, b: number = 5) => {
   return a + b;
 };
