@@ -1,16 +1,3 @@
-$gs: 40px;
-
-#t1 {
-  font-size: $gs;
-
-  &:hover {
-    color: blue;
-  }
-}
-
-html, body {
-  color: var(--black-800);
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 1.30769231
+*:focus {
+  outline: 3px solid black;
 }
